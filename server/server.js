@@ -1,10 +1,12 @@
 const express = require('express');
-const db = require('./dbConnect.js')
+const cors = require('cors');
+const db = require('./dbConnect.js');
 
 const app = express();
-const cors = require('cors');
+const PORT = process.env.PORT || 8080;
+
 const corsOptions = {
-    origin: ["http://localhost:5173"]
+    origin: ["http://localhost:5173"] 
 };
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -97,6 +99,6 @@ app.post('/api/removeUser', (req, res) => {
 })
 
 
-app.listen(8080, () => {
-    console.log("Server started on port 8080")
-})
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+});
