@@ -11,7 +11,7 @@ as well as account verification. At time of submission, Sparkflix features UI co
 google OAuth. That being said, I will continue working on this project so it may be by the time of review. In order to acquire movie data(images, descriptions, etc) for the
 netflix interface, I utilized the free tmdb api.
 Time Spent:
-I spent around 28 hours across the past 4 days to get to the stage I’m at. (Most of this was from meticulous css styling)
+I spent around 25-27 hours across the past 4 days to get to the stage I’m at. (Most of this was from meticulous css styling)
 Features:
 My application features frontend components as well as simple transition/fade-in animations that replicate what the netflix site uses. Although I didn’t attempt to 
 replicate the mobile interface or focus much on mobile compatibility, I tried to make the pages responsive to window size, and therefore should be generally functional
