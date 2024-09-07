@@ -1,29 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/sparkflix-9-3-2024.png';
 import norsemenImage from '../../assets/stock-norsemen.png';
 import 'boxicons/css/boxicons.min.css';
 import '../../styles/insidenav.css';
 import '../../styles/home.css';
 import backgroundVideo from '../../assets/stock-netflix.mp4';
-import fetchPopularMovies from '../../util/queryMovies'; // Ensure this function returns a promise
+import fetchPopularMovies from '../../util/queryMovies'; 
+import fetchTopRatedMovies from '../../util/queryTopRatedMovies.js';
+import MovieModal from '../../components/MovieModal.jsx'; 
+import Footer from '../../components/Footer.jsx';
 
 function Home() {
     const [popularMovies, setPopularMovies] = useState([]);
+    const [topRated, setTopRated] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedMovie, setSelectedMovie] = useState(null); // Manage selected movie
+    const [modalVisible, setModalVisible] = useState(false); // Manage modal visibility
+    const [searchVisible, setSearchVisible] = useState(false); // Manage search bar visibility
+    const [searchQuery, setSearchQuery] = useState(''); // Manage search input value
+
+    const navigate = useNavigate();
 
     const user = {
         name: localStorage.getItem('userName'),
         id: localStorage.getItem('userId'),
-        image: localStorage.getItem('userImage')
+        image: localStorage.getItem('userImage'),
+        accountId: localStorage.getItem('accountId')
     };
 
     useEffect(() => {
         async function getMovies() {
             try {
                 const movieData = await fetchPopularMovies();
-                setPopularMovies(movieData); // Assuming fetchMovies resolves to an array
+                const topMovieData = await fetchTopRatedMovies();
+                setPopularMovies(movieData);
+                setTopRated(topMovieData);
                 setLoading(false);
             } catch (error) {
                 setError(error);
@@ -33,6 +46,31 @@ function Home() {
 
         getMovies();
     }, []);
+
+    const handleMovieClick = (movie) => {
+        setSelectedMovie(movie);
+        setModalVisible(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalVisible(false);
+        setSelectedMovie(null);
+    };
+
+    const toggleSearchBar = () => {
+        document.querySelector('.bx-search').classList.toggle('active');
+        setSearchVisible(!searchVisible);
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        // Implement the search logic here, e.g., fetch search results from an API
+        console.log('Searching for:', searchQuery);
+    };
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
@@ -45,12 +83,34 @@ function Home() {
                 <NavLink to="/movies" className="nav-link">Movies</NavLink>
                 <NavLink to="/tvshows" className="nav-link">TV Shows</NavLink>
                 <NavLink to="/mylist" className="nav-link">My List</NavLink>
-                <i className="bx bx-search"></i>
-                {user.image && <img src={user.image} className="profile-image" alt="User Profile" />}
+                <i className="bx bx-search" onClick={toggleSearchBar} style={{ cursor: 'pointer' }}></i>
+                {searchVisible && (
+                    <form onSubmit={handleSearchSubmit} className="search-bar">
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            placeholder="Search for a movie or show..."
+                            className="search-input"
+                        />
+                    </form>
+                )}
+                {user.image && (
+                    <img
+                        src={user.image}
+                        onClick={() => {
+                            localStorage.setItem('userId', user.accountId);
+                            navigate('/whoswatching');
+                        }}
+                        className="profile-image"
+                        alt="User Profile"
+                        style={{ cursor: 'pointer' }}
+                    />
+                )}
             </header>
             <div className="background-video">
                 <video autoPlay muted loop playsInline>
-                    <source src={backgroundVideo} type="video/mp4" /> 
+                    <source src={backgroundVideo} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 <img src={norsemenImage} alt="norsemen-image" className="description-image" />
@@ -74,7 +134,28 @@ function Home() {
                 <h1 className="movie-carousel-title">Popular Movies</h1>
                 <div className="movie-carousel">
                     {popularMovies.map((movie) => (
-                        <div key={movie.id} className="movie-item">
+                        <div
+                            key={movie.id}
+                            className="movie-item"
+                            onClick={() => handleMovieClick(movie)}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <img 
+                                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} 
+                                alt={`Movie ${movie.id}`} 
+                            />
+                        </div>
+                    ))}
+                </div>
+                <h1 className="movie-carousel-title">Top Rated Movies</h1>
+                <div className="movie-carousel">
+                    {topRated.map((movie) => (
+                        <div
+                            key={movie.id}
+                            className="movie-item"
+                            onClick={() => handleMovieClick(movie)}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <img 
                                 src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} 
                                 alt={`Movie ${movie.id}`} 
@@ -83,6 +164,9 @@ function Home() {
                     ))}
                 </div>
             </div>
+            <Footer />
+
+            {modalVisible && <MovieModal movie={selectedMovie} onClose={handleCloseModal} />}
         </div>
     );
 }
