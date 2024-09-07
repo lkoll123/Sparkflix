@@ -11,7 +11,11 @@
   }
 
   .homescreen .footer,
-  .login .footer {
+  .login .footer,
+  #home-page .footer,
+  #tv-shows .footer,
+  #movies .footer,
+  #my-list .footer {
     background-color: #0d0d0d;
     color: #c3c3c3;
   }

@@ -108,6 +108,7 @@
     overflow-x: auto;
     padding: 20px;
     margin-top: 20px; 
+    margin-bottom: 150px;
     scroll-behavior: smooth;
     gap: 10px;
 }
