@@ -1,40 +1,74 @@
-import React from 'react'; 
+import React, { useState } from 'react'; 
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/sparkflix-9-3-2024.png';
 import 'boxicons/css/boxicons.min.css';
 import '../../styles/insidenav.css';
+import Footer from '../../components/Footer.jsx';
 
-function App() {
+function MyList() {
+    const [searchVisible, setSearchVisible] = useState(false); // Manage search bar visibility
+    const [searchQuery, setSearchQuery] = useState(''); // Manage search input value
+
     const navigate = useNavigate();
-    const user = {};
-    user.name = localStorage.getItem('userName');
-    user.id = localStorage.getItem('userId');
-    user.image = localStorage.getItem('userImage');
-    user.accountId = localStorage.getItem('accountId');
-  return (
-    <div id="my-list" className="inside">
-        <header>
+    const user = {
+        name: localStorage.getItem('userName'),
+        id: localStorage.getItem('userId'),
+        image: localStorage.getItem('userImage'),
+        accountId: localStorage.getItem('accountId'),
+    };
+
+    const toggleSearchBar = () => {
+        document.querySelector('.bx-search').classList.toggle('active');
+        setSearchVisible(!searchVisible);
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        // Implement the search logic here, e.g., fetch search results from an API
+        console.log('Searching for:', searchQuery);
+    };
+
+    return (
+        <div id="my-list" className="inside">
+            <header>
                 <img className="netflix-logo" src={logo} alt="Netflix Logo" />
                 <NavLink to="/home" className="nav-link">Home</NavLink>
                 <NavLink to="/movies" className="nav-link">Movies</NavLink>
                 <NavLink to="/tvshows" className="nav-link">TV Shows</NavLink>
                 <NavLink to="/mylist" className="nav-link">My List</NavLink>
-                <i className="bx bx-search"></i>
+                <i className="bx bx-search" onClick={toggleSearchBar} style={{ cursor: 'pointer' }}></i>
+                {searchVisible && (
+                    <form onSubmit={handleSearchSubmit} className="search-bar">
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                            placeholder="Search for a movie or show..."
+                            className="search-input"
+                        />
+                    </form>
+                )}
                 {user.image && (
                     <img
                         src={user.image}
                         onClick={() => {
-                            localStorage.setItem('userId', user.accountId)
+                            localStorage.setItem('userId', user.accountId);
                             navigate('/whoswatching');
                         }}
                         className="profile-image"
                         alt="User Profile"
-                        style={{ cursor: 'pointer' }} // Ensure the cursor is a pointer to show it's clickable
+                        style={{ cursor: 'pointer' }}
                     />
                 )}
             </header>
-    </div>
-  );
+            <h1>Coming Soon!</h1>
+            <Footer />
+        </div>
+    );
 }
 
-export default App;
+export default MyList;

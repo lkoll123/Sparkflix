@@ -38,6 +38,7 @@ function HomeScreen() {
     
                 if (exists) {
                     setEmailExistsError(true);
+                    setShowError(false);
                 } else {
                     navigate('/signup', { state: { email: formData.email } });
                 }

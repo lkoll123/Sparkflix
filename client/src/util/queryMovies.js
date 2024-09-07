@@ -25,3 +25,4 @@ async function fetchPopularMovies() {
 // Call the function to fetch popular movies
 
 export default fetchPopularMovies;
+
