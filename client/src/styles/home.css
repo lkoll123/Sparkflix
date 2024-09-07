@@ -1,0 +1,128 @@
+
+#home-page {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll */
+    position: relative;
+    background-color: black;
+}
+
+
+
+
+.background-video {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    z-index: 0; 
+}
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.description-image {
+    height: 20vh;
+    width: 40vw;
+    position: absolute;
+    top: 250px;
+    left: 10%; 
+    z-index: 2; 
+}
+
+.description {
+    position: absolute;
+    top: calc(270px + 20vh); 
+    left: 10%; 
+    width: 40vw;
+    height: 200px;
+    overflow: scroll;
+    z-index: 2; 
+    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.4), 
+        rgba(0, 0, 0, 0.8)
+    );
+    border-radius: 30px;
+    filter: drop-shadow(50px 50px 50px  #000000);
+    font-size: 20px;
+    color: White;
+}
+
+.buttons-container {
+    position: absolute;
+    top: calc(550px + 20vh); 
+    left: 10%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px; 
+}
+
+.play-button, .my-list-button {
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+}
+
+.play-button {
+    background-color: #e50914; /* Netflix red */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.play-button:hover {
+    background-color: #ff010e;
+}
+
+.my-list-button {
+    background-color: #333; /* Dark gray for the "My List" button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.my-list-button:hover {
+    background-color: #565656;
+}
+
+/* Ensure that everything-below is placed correctly */
+.everything-below {
+    background: black;
+    margin-top: calc(700px + 20vh); /* Adjust this margin based on your design */
+}
+
+.movie-carousel {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 20px;
+    margin-top: 20px; 
+    scroll-behavior: smooth;
+    gap: 10px;
+}
+
+.movie-item {
+    flex: 0 0 auto; 
+    width: 150px; 
+    height: 225px; 
+    border-radius: 8px; 
+    overflow: hidden;
+    position: relative;
+}
+
+.movie-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}

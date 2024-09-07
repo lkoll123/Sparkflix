@@ -1,0 +1,176 @@
+.homescreen.main-container {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.65); 
+    overflow: scroll;
+    
+}
+
+.homescreen.main-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/movieCollage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+}
+
+.homescreen header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.error-message {
+    color: #e30d18;
+    margin-top: -1.5vw;
+    font-size: 0.8vw
+
+}
+.bold-button {
+    background-color: #E50914;
+    color: #FFFFFF; 
+    font-weight: bold; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.bold-button:hover {
+    background-color: #ff0310; 
+}
+
+.netflix-logo {
+    width: 20%;
+    margin-right: 60%;
+}
+
+#signup-section {
+    width: 50vw;
+    margin-left: 25%;
+    margin-bottom: 200px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+#signup-section h1 {
+    font-size: 5vw; 
+    font-weight: 900;
+    margin-bottom: -1%;
+}
+
+#signup-section h2 {
+    font-size: 2vw; 
+    font-weight: 900;
+}
+
+#signup-section p {
+    font-size: 1.5vw;
+}
+
+#signup-section form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Center the input and button horizontally */
+    align-items: center; /* Center items vertically */
+    gap: 2vw; /* Spacing between input and button */
+    width: 100%;
+    padding: 1vw; /* Optional padding for form container */
+}
+
+#signup-section .input-group {
+    position: relative;
+    width: 100%;
+}
+
+#signup-section input {
+    height: 5vh; 
+    width: 30vw; 
+    padding: 1vh; 
+    border: 1px solid #ddd;
+    border-radius: 0.5vh; 
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 1.5vw; 
+    outline: none;
+    position: relative;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+#signup-section input:focus {
+    border-color: #e50914; /* Netflix red */
+}
+
+#signup-section .placeholder {
+    position: absolute;
+    top: 50%;
+    left: 7vh; 
+    font-size: 2vw; 
+    color: #aaa;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+#signup-section input:focus ~ .placeholder,
+#signup-section input:not(:placeholder-shown) ~ .placeholder {
+    top: 1.25vh; 
+    left: 2.9vh; 
+    font-size: 1vw; 
+    
+}
+
+#signup-section button {
+    height: 8vh; 
+    width: 20vw;
+    font-size: 1.5vw; 
+    padding: 0 2vw; 
+    border: none;
+    border-radius: 0.5vh; /* Relative border radius */
+    background-color: #e50914; /* Netflix red */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#signup-section button:hover {
+    background-color: #ff0310; 
+}
+
+
+.arrow {
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-bottom: 0.3vh;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }

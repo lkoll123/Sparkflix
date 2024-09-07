@@ -1,0 +1,225 @@
+
+
+#whos-watching-page,
+#whos-watching-page-add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #141414;
+    color: #fff;
+}
+
+#whos-watching-netflix-logo {
+    width: 20%;
+    margin-right: 60%;
+}
+.remove-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: red;
+    background-color: white;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Ensure profile box has relative positioning */
+.whos-watching-box {
+    position: relative;
+}
+
+.whos-watching-header {
+    margin-bottom: 40px;
+}
+
+.whos-watching-title {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.whos-watching-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.whos-watching-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.whos-watching-profile {
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    position: relative;
+}
+
+.whos-watching-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.whos-watching-box {
+    height: 200px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.whos-watching-profile-name {
+    margin: 0;
+    padding: 5px;
+    font-size: 1rem;
+    position: relative;
+    top: 0px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.whos-watching-profile:hover {
+    transform: scale(1.05);
+    border: 3px solid #e1e1e1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.whos-watching-add-profile,
+.whos-watching-remove-profile {
+    background: rgba(0, 0, 0, 0);
+}
+
+.whos-watching-add-profile i,
+.whos-watching-remove-profile i{
+    font-size: 100px;
+}
+
+.whos-watching-add-text {
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+
+.add-user-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.add-user-content {
+    background: #1d1d1d;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.add-user-title {
+    margin: 0;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.form-input, .form-select {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #222;
+    color: #fff;
+}
+
+.form-select {
+    background: #333;
+}
+
+.form-checkbox {
+    margin-right: 10px;
+}
+
+.form-checkbox-label {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    background: #e50914;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-cancel {
+    background: #555;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+@keyframes blurIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+        filter: blur(7px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+#whos-watching-page {
+    animation: blurIn 0.6s ease-out; 
+    opacity: 1; 
+}
