@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 require("dotenv").config();
 
-const dbUrl= 'mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:3306/${process.env.MYSQL_DATABASE}'
+const dbUrl= `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:3306/${process.env.MYSQL_DATABASE}`
 
 const db = mysql.createConnection(dbUrl);
 
