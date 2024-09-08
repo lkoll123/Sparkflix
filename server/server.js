@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 const corsOptions = {
     origin: ["http://localhost:5173", "https://main--sparkflixapp.netlify.app"]
 };
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.post('/api/signup', (req, res) => {
