@@ -31,7 +31,7 @@ function WhosWatching() {
     useEffect(() => {
         const fetchProfiles = async () => {
             try {
-                const res = await axios.get('http://localhost:8080/api/getUsers', {
+                const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/getUsers', {
                     params: { userId: userId }
                 });
                 if (res.data !== "EMPTY") {
@@ -65,7 +65,7 @@ function WhosWatching() {
     };
 
     const handleAddProfile = async (newProfile) => {
-        await axios.post('http://localhost:8080/api/setUser', { ...newProfile, userId: userId })
+        await axios.post('{process.env.REACT_APP_BACKEND_URL}/api/setUser', { ...newProfile, userId: userId })
         .then((res) => {
                 console.log(res);
         })
@@ -76,7 +76,7 @@ function WhosWatching() {
     const handleRemoveProfile = (profileId) => {
         const updatedProfiles = profiles.filter(profile => profile.id !== profileId);
         setProfiles(updatedProfiles);
-        axios.post('http://localhost:8080/api/removeUser', {userId: profileId})
+        axios.post('{process.env.REACT_APP_BACKEND_URL}/api/removeUser', {userId: profileId})
         .then((res) => {
             console.log(res);
         })
