@@ -11,10 +11,10 @@ const {
 
 // Create a connection using individual configuration options
 const db = mysql.createConnection({
-    host: DB_HOST || 'mysql.railway.internal', // Use default if environment variable is missing
-    user: DB_USER || 'root', // Use default if environment variable is missing
-    password: DB_PASSWORD || 'bWkQMBcHdAGVbxSokDqmaXzsBykqFohd', // Use default if environment variable is missing
-    database: DB_NAME || 'railway' // Use default if environment variable is missing
+    host: MYSQLHOST || 'mysql.railway.internal', // Use default if environment variable is missing
+    user: MYSQLUSER || 'root', // Use default if environment variable is missing
+    password: MYSQLPASSWORD || 'bWkQMBcHdAGVbxSokDqmaXzsBykqFohd', // Use default if environment variable is missing
+    database: MYSQLDATABASE || 'railway' // Use default if environment variable is missing
 });
 
 db.connect((err) => {
