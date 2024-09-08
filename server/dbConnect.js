@@ -1,21 +1,9 @@
 const mysql = require('mysql');
-require('dotenv').config();
+require("dotenv").config();
 
-// Ensure environment variables are properly set
-const {
-    MYSQLHOST,
-    MYSQLUSER,
-    MYSQLPASSWORD,
-    MYSQLDATABASE
-} = process.env;
+const dbUrl= `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:3306/${process.env.MYSQL_DATABASE}`
 
-// Create a connection using individual configuration options
-const db = mysql.createConnection({
-    host: MYSQLHOST || 'mysql.railway.internal', // Use default if environment variable is missing
-    user: MYSQLUSER || 'root', // Use default if environment variable is missing
-    password: MYSQLPASSWORD || 'bWkQMBcHdAGVbxSokDqmaXzsBykqFohd', // Use default if environment variable is missing
-    database: MYSQLDATABASE || 'Sparkflix' // Use default if environment variable is missing
-});
+const db = mysql.createConnection(dbUrl);
 
 db.connect((err) => {
     if (err) {
