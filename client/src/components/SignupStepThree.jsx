@@ -75,7 +75,7 @@ function SignupStepThree(props) {
         if (props.formData.plan === '') {
             setError(true);
         } else {
-            axios.post('http://localhost:8080/api/signup', updatedFormData)
+            axios.post('{process.env.REACT_APP_BACKEND_URL}/api/signup', updatedFormData)
             .then((res) => {
                 console.log(res);
                 navigate('/login');

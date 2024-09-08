@@ -32,7 +32,7 @@ function LoginForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8080/api/login', formData)
+        axios.post('{process.env.REACT_APP_BACKEND_URL}/api/login', formData)
         .then(async (res) => {
             if (res.data === "Failed") {
                 setErrorMessage(true);
