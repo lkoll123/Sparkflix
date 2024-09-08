@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     host: MYSQLHOST || 'mysql.railway.internal', // Use default if environment variable is missing
     user: MYSQLUSER || 'root', // Use default if environment variable is missing
     password: MYSQLPASSWORD || 'bWkQMBcHdAGVbxSokDqmaXzsBykqFohd', // Use default if environment variable is missing
-    database: MYSQLDATABASE || 'railway' // Use default if environment variable is missing
+    database: MYSQLDATABASE || 'Sparkflix' // Use default if environment variable is missing
 });
 
 db.connect((err) => {
