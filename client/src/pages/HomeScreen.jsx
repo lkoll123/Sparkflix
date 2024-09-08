@@ -30,7 +30,7 @@ function HomeScreen() {
             let exists = false;
             try {
                 // Use params to send query parameters in a GET request
-                const res = await axios.get("http://localhost:8080/api/checkEmail", {
+                const res = await axios.get("{process.env.REACT_APP_BACKEND_URL}/api/checkEmail", {
                     params: { email: formData.email }
                 });
                 
