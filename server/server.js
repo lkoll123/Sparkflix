@@ -22,6 +22,7 @@ app.post('/api/signup', (req, res) => {
 
     db.query(sql, [values], (err, data) => {
         if(err) {
+            console.log(err)
             return res.status(400).send("Error");
         }
         return res.json(data);
@@ -33,6 +34,7 @@ app.post('/api/login', (req, res) => {
     const {email} = req.body;
     db.query(sql, [email], (err, data) => {
         if(err) {
+            console.log(err)
             return res.status(400).send("Error");
         }
         if(data.length > 0) {
@@ -47,6 +49,7 @@ app.get('/api/checkEmail', (req, res) => {
     const sql = "SELECT * FROM accounts WHERE email = ?";
     db.query(sql, [email], (err, data) => {
         if(err) {
+            console.log(err)
             return res.status(400).send("Error");
         }
         if (data.length === 0) {
@@ -62,6 +65,7 @@ app.get('/api/getUsers', (req, res) => {
     const sql = "SELECT * FROM users WHERE accountId = ?";
     db.query(sql, [userId], (err, data) => {
         if(err) {
+            console.log(err)
             return res.status(400).send("Error");
         }
         if (data.length === 0) {
