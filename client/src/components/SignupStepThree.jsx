@@ -75,7 +75,7 @@ function SignupStepThree(props) {
         if (props.formData.plan === '') {
             setError(true);
         } else {
-            axios.post('${import.meta.env.VITE_BACKEND_URL}/api/signup', updatedFormData)
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/signup`, updatedFormData)
             .then((res) => {
                 console.log(res);
                 navigate('/login');

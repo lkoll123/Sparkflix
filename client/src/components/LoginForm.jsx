@@ -32,7 +32,7 @@ function LoginForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        axios.post('${import.meta.env.VITE_BACKEND_URL}/api/login', formData)
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, formData)
         .then(async (res) => {
             if (res.data === "Failed") {
                 setErrorMessage(true);
