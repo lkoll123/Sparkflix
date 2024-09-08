@@ -1,11 +1,11 @@
 // src/App.jsx
 import React from 'react'; // Import React
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Correct router imports
-import HomeScreen from './pages/homeScreen.jsx'; // Correct import and use PascalCase
-import Login from './pages/login.jsx'
-import Signup from './pages/signup.jsx'
+import HomeScreen from './pages/HomeScreen.jsx'; // Correct import and use PascalCase
+import Login from './pages/Login.jsx'
+import Signup from './pages/Signup.jsx'
 import WhosWatching from './pages/loggedIn/WhosWatching.jsx';
-import Home from './pages/loggedIn/home.jsx';
+import Home from './pages/loggedIn/Home.jsx';
 import Movies from './pages/loggedIn/Movies.jsx';
 import TvShows from './pages/loggedIn/TvShows.jsx';
 import MyList from './pages/loggedIn/MyList.jsx';
